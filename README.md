@@ -7,7 +7,23 @@ Easily switch between PHP versions on your Mac. Requires Homebrew and works with
 
 ### ⬇️️️ Installation:
 
-TODO
+Installing `switch-php` is as easy as running:
+
+```
+npm install --global switch-php
+```
+
+If you use Yarn, you can do this:
+
+```
+yarn global add switch-php
+```
+
+Alternatively you can move the `switch-php.sh` file from this repo into your home directory and add this line in your `.bashrc`/`.zshrc`/etc.:
+
+```
+source ~/switch-php.sh
+```
 
 
 ### ⚙ Usage:
