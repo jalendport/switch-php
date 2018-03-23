@@ -1,0 +1,33 @@
+{
+  "name": "switch-php",
+  "version": "1.0.0",
+  "description": "Easily switch between PHP versions on your Mac. Requires Homebrew and works with Laravel Valet.",
+  "keywords": [
+    "php",
+    "php56",
+    "php70",
+    "php71",
+    "php72",
+    "switch",
+	"switcher",
+	"memory",
+    "mac",
+    "macintosh",
+    "brew",
+    "homebrew",
+    "valet",
+    "laravel",
+    "terminal",
+    "cli",
+	"bash",
+	"zsh",
+	"script",
+	"shell",
+	"sh"
+  ],
+  "author": "Jalen Davenport <jalen@dominion-designs.com> (https://dominion-designs.com)",
+  "license": "See license in LICENSE.md",
+  "repository": "https://github.com/jalendport/switch-php",
+  "bugs": "https://github.com/jalendport/switch-php/issues",
+  "bin": "./switch-php.sh"
+}
