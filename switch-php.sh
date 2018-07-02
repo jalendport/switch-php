@@ -1,4 +1,4 @@
-#!/bin/bash
+# !/bin/bash
 
 
 # Set verbose to be off by default
@@ -14,15 +14,15 @@ NC="\e[0m" # Reset everything
 
 
 # Currently available php packages
-php_array=("php56" "php70" "php71" "php72")
-brew_array=("56" "70" "71" "72")
+brew_array=("5.6" "7.0" "7.1" "7.2")
+php_array=("php@5.6" "php@7.0" "php@7.1" "php@7.2")
 
 
-# Starts the spinner
+# STARTS THE SPINNER
 # $1 = message to be displayed
 start_spinner() {
 
-	# Let's not do the fancy spinner if we're in verbose mode
+# Let's not do the fancy spinner if we're in verbose mode
 	if [ "$verbose" = 1 ]; then
 		printf "$1...\n"
 
@@ -42,7 +42,7 @@ start_spinner() {
 }
 
 
-# Stops the spinner
+# STOPS THE SPINNER
 # $1 = message to be displayed
 stop_spinner() {
 
@@ -59,7 +59,7 @@ stop_spinner() {
 
 }
 
-# Stops the spinner
+# SHOWS ERRORS AND HELP
 # $1 = error message to be displayed
 show_help() {
 
@@ -84,9 +84,9 @@ show_help() {
 	printf "\n${YELLOW}Customizing the PHP Memory Settings:${NC}\n"
 	printf "  - If you don't pass an argument to \"-m\" or \"--memory\", it will reset any previously set custom memory settings to the default Valet config.\n"
 	printf "  - Alternatively, you can pass an argument to \"-m\" or \"--memory\" if you want to override the default Valet memory settings. For example, you can do: \n\n"
-	printf "      ${GREEN}switch-php 71 -m 512M${NC}       # php71 with 512MB of memory\n"
-	printf "      ${GREEN}switch-php 72 -m 2G -v${NC}      # php72 with 2GB of memory; verbose output\n"
-	printf "      ${GREEN}switch-php 56 --memory=1G${NC}   # php56 with 1GB of memory\n\n"
+	printf "      ${GREEN}switch-php 7.1 -m 512M${NC}       # php@7.1 with 512MB of memory\n"
+	printf "      ${GREEN}switch-php 7.2 -m 2G -v${NC}      # php@7.2 with 2GB of memory; verbose output\n"
+	printf "      ${GREEN}switch-php 5.6 --memory=1G${NC}   # php@5.6 with 1GB of memory\n\n"
 	printf "  - Note: customizing PHP memory settings currently only works for Laravel Valet users. If you don't use Valet, we hope to get this working for you as well in an upcoming release.\n"
 	exit
 
@@ -106,9 +106,8 @@ while :; do
             show_help
             exit
             ;;
-		56|70|71|72) # If a version is specified; then
-			php_version="php$1"
-			php_version_sh="${php_version:3:1}.${php_version:4}"
+		5.6|7.0|7.1|7.2) # If a version is specified; then
+			php_version="php@$1"
 			rflag="true"  # Required!
 			;;
 	    -v|--verbose) # The verbose option
@@ -125,7 +124,7 @@ while :; do
         --memory=?*) # Another memory option
             memory=${1#*=} # Set memory to whatever follows the "=" sign
             ;;
-        --memory=) # Yet anothr memory option
+        --memory=) # Yet another memory option
             show_help "Uh-oh! Please specify an argument for \"--memory\"." # If nothing follows the "=" sign, show an error
             ;;
         -?*) # Matches any unknown options
@@ -183,7 +182,7 @@ if [[ " ${php_installed_array[*]} " == *"$php_version"* ]]; then # If the reques
 			fi
 		done
 		[ $verbose -eq 1 ] && printf " ==>  Linking $php_version...\n" # If $verbose, then echo
-		brew link "$php_version" &> /dev/null # Link the new PHP version and hide the output
+		brew link --force "$php_version" &> /dev/null # Link the new PHP version and hide the output
 		[ $verbose -eq 1 ] && printf " ==>  Starting $php_version...\n" # If $verbose, then echo
 		brew services start "$php_version" &> /dev/null # Start the Brew service for the new PHP version and hide the output
 	[ $verbose -eq 1 ] && stop_spinner " ✅  PHP switched" || stop_spinner "PHP switched" # If $verbose, then echo a; otherwise, echo b
@@ -227,6 +226,6 @@ if [[ " ${php_installed_array[*]} " == *"$php_version"* ]]; then # If the reques
 	printf "\nYou are now using PHP $new_version\n" # Display a message specifying the new version
 
 else # If the requested PHP version is not installed; then let's show a handy message on how to quickly get it
-	printf "Sorry, but $php_version is not installed via brew."
-	printf "Install by running: \e[1mbrew install $php_version"
+	printf "Sorry, but $php_version is not installed via brew. "
+	printf "Install by running: \e[1mbrew install $php_version\n"
 fi
