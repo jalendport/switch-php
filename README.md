@@ -33,11 +33,11 @@ You must have PHP installed via Homebrew in order for `switch-php` to work. `swi
 Here's an example of how you would use `switch-php`:
 
 ```
-$ switch-php 71 -v -m 512M
+$ switch-php 7.1 -v -m 512M
 ```
 
 1. `switch-php` -> The main command. (Required)
-1. `71` -> Specify the version of PHP you want to switch too, in this case `php71`. (Required)
+1. `7.1` -> Specify the version of PHP you want to switch too, in this case `php71`. (Required)
 1. `-v` -> Request verbose output (Optional)
 1. `-m 512M` -> Request a custom PHP memory setting. If you don't pass an additional arugment, the memory will be reset to the Valet default. (Optional)
 
@@ -53,10 +53,10 @@ Options:
   -m, --memory    Customize the PHP memory setting (Valet only)
 
 Available Versions:
-  56              Switch to php56
-  70              Switch to php70
-  71              Switch to php71
-  72              Switch to php72
+  5.6              Switch to php@5.6
+  7.0              Switch to php@7.0
+  7.1              Switch to php@7.1
+  7.2              Switch to php@7.2
 ```
 
 
@@ -66,9 +66,9 @@ Available Versions:
 - Alternatively, you can pass an argument to `-m` or    `--memory` if you want to override the default Valet memory settings. For example, you can do:
 
 ```
-switch-php 71 -m 512M       # php71 with 512MB of memory
-switch-php 72 -m 2G -v      # php72 with 2GB of memory; verbose output
-switch-php 56 --memory=1G   # php56 with 1GB of memory
+switch-php 7.1 -m 512M       # php@7.1 with 512MB of memory
+switch-php 7.2 -m 2G -v      # php@7.2 with 2GB of memory; verbose output
+switch-php 5.6 --memory=1G   # php@5.6 with 1GB of memory
 ```
 
 - *Note: customizing PHP memory settings currently only works for Laravel Valet users. If you don't use Valet, we hope to get this working for you as well in an upcoming release.*
