@@ -1,6 +1,6 @@
 {
   "name": "switch-php",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Easily switch between PHP versions on your Mac. Requires Homebrew and works with Laravel Valet.",
   "keywords": [
     "php",
