@@ -1,4 +1,4 @@
-#!/bin/bash
+# !/bin/bash
 
 
 # Set verbose to be off by default
@@ -18,11 +18,11 @@ brew_array=("5.6" "7.0" "7.1" "7.2")
 php_array=("php@5.6" "php@7.0" "php@7.1" "php@7.2")
 
 
-# Starts the spinner
+# STARTS THE SPINNER
 # $1 = message to be displayed
 start_spinner() {
 
-	# Let's not do the fancy spinner if we're in verbose mode
+# Let's not do the fancy spinner if we're in verbose mode
 	if [ "$verbose" = 1 ]; then
 		printf "$1...\n"
 
@@ -42,7 +42,7 @@ start_spinner() {
 }
 
 
-# Stops the spinner
+# STOPS THE SPINNER
 # $1 = message to be displayed
 stop_spinner() {
 
@@ -59,7 +59,7 @@ stop_spinner() {
 
 }
 
-# Stops the spinner
+# SHOWS ERRORS AND HELP
 # $1 = error message to be displayed
 show_help() {
 
@@ -124,7 +124,7 @@ while :; do
         --memory=?*) # Another memory option
             memory=${1#*=} # Set memory to whatever follows the "=" sign
             ;;
-        --memory=) # Yet anothr memory option
+        --memory=) # Yet another memory option
             show_help "Uh-oh! Please specify an argument for \"--memory\"." # If nothing follows the "=" sign, show an error
             ;;
         -?*) # Matches any unknown options
@@ -226,6 +226,6 @@ if [[ " ${php_installed_array[*]} " == *"$php_version"* ]]; then # If the reques
 	printf "\nYou are now using PHP $new_version\n" # Display a message specifying the new version
 
 else # If the requested PHP version is not installed; then let's show a handy message on how to quickly get it
-	printf "Sorry, but $php_version is not installed via brew."
-	printf "Install by running: \e[1mbrew install $php_version"
+	printf "Sorry, but $php_version is not installed via brew. "
+	printf "Install by running: \e[1mbrew install $php_version\n"
 fi
