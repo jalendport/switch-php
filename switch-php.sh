@@ -214,7 +214,7 @@ if [[ " ${php_installed_array[*]} " == *"$php_version"* ]]; then # If the reques
 			[ $verbose -eq 1 ] && stop_spinner " ✅  Valet started" || stop_spinner "Valet started" # If $verbose, then echo a; otherwise, echo b
 			[ $verbose -eq 1 ] && start_spinner " 🎛  Configuring PHP" || start_spinner "Configuring PHP" # If $verbose, then echo a; otherwise, echo b
 				[ $verbose -eq 1 ] && printf " ==>  Setting PHP memory to $memory...\n" # If $verbose, then echo
-				printf "\nmemory_limit = $memory" >> /usr/local/etc/php/$php_version_sh/conf.d/php-memory-limits.ini # Add the new memory setting to our PHP config file
+				printf "\nmemory_limit = $memory" >> /usr/local/etc/php/${php_version:4}/conf.d/php-memory-limits.ini # Add the new memory setting to our PHP config file
 				[ $verbose -eq 1 ] && printf " ==>  Restarting PHP...\n" # If $verbose, then echo
 				brew services restart "$php_version" &> /dev/null # Restart the Brew service for the new PHP version and hide the output
 			[ $verbose -eq 1 ] && stop_spinner " ✅  PHP configured" || stop_spinner "PHP configured" # If $verbose, then echo a; otherwise, echo b
