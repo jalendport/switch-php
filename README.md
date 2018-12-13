@@ -57,6 +57,7 @@ Available Versions:
   7.0              Switch to php@7.0
   7.1              Switch to php@7.1
   7.2              Switch to php@7.2
+  7.3              Switch to php@7.3
 ```
 
 
@@ -67,7 +68,7 @@ Available Versions:
 
 ```
 switch-php 7.1 -m 512M       # php@7.1 with 512MB of memory
-switch-php 7.2 -m 2G -v      # php@7.2 with 2GB of memory; verbose output
+switch-php 7.3 -m 2G -v      # php@7.3 with 2GB of memory; verbose output
 switch-php 5.6 --memory=1G   # php@5.6 with 1GB of memory
 ```
 
