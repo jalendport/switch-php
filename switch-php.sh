@@ -14,8 +14,8 @@ NC="\e[0m" # Reset everything
 
 
 # Currently available php packages
-brew_array=("5.6" "7.0" "7.1" "7.2")
-php_array=("php@5.6" "php@7.0" "php@7.1" "php@7.2")
+brew_array=("5.6" "7.0" "7.1" "7.2" "7.3")
+php_array=("php@5.6" "php@7.0" "php@7.1" "php@7.2" "php@7.3")
 
 
 # STARTS THE SPINNER
@@ -85,7 +85,7 @@ show_help() {
 	printf "  - If you don't pass an argument to \"-m\" or \"--memory\", it will reset any previously set custom memory settings to the default Valet config.\n"
 	printf "  - Alternatively, you can pass an argument to \"-m\" or \"--memory\" if you want to override the default Valet memory settings. For example, you can do: \n\n"
 	printf "      ${GREEN}switch-php 7.1 -m 512M${NC}       # php@7.1 with 512MB of memory\n"
-	printf "      ${GREEN}switch-php 7.2 -m 2G -v${NC}      # php@7.2 with 2GB of memory; verbose output\n"
+	printf "      ${GREEN}switch-php 7.3 -m 2G -v${NC}      # php@7.3 with 2GB of memory; verbose output\n"
 	printf "      ${GREEN}switch-php 5.6 --memory=1G${NC}   # php@5.6 with 1GB of memory\n\n"
 	printf "  - Note: customizing PHP memory settings currently only works for Laravel Valet users. If you don't use Valet, we hope to get this working for you as well in an upcoming release.\n"
 	exit
@@ -106,7 +106,7 @@ while :; do
             show_help
             exit
             ;;
-		5.6|7.0|7.1|7.2) # If a version is specified; then
+		5.6|7.0|7.1|7.2|7.3) # If a version is specified; then
 			php_version="php@$1"
 			rflag="true"  # Required!
 			;;
