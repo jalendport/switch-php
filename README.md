@@ -58,6 +58,7 @@ Available Versions:
   7.1              Switch to php@7.1
   7.2              Switch to php@7.2
   7.3              Switch to php@7.3
+  7.4		   Switch to php@7.4
 ```
 
 
