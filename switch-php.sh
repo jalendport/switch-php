@@ -161,7 +161,6 @@ for i in ${php_array[*]}; do # For all PHP versions listed in php_array:
 	fi
 done
 
-
 # The main switcher script :P
 if [[ " ${php_installed_array[*]} " == *"$php_version"* ]]; then # If the requested PHP version is installed; then
 
@@ -171,6 +170,10 @@ if [[ " ${php_installed_array[*]} " == *"$php_version"* ]]; then # If the reques
 			valet stop &> /dev/null # Stop Valet and hide the output
 		[ $verbose -eq 1 ] && stop_spinner " ✅  Valet stopped" || stop_spinner "Valet stopped" # If $verbose, then echo a; otherwise, echo b
 	fi
+
+    # Pre Switch Hook
+    [ "$(type -t _switch_php_pre_tasks)" = "function" ] && _switch_php_pre_tasks "${php_version}" "${verbose}"|| echo "$(type -t _switch_php_pre_tasks)"
+
 
 	[ $verbose -eq 1 ] && start_spinner " 🔀  Switching to $php_version" || start_spinner "Switching PHP" # If $verbose, then echo a; otherwise, echo b
 	    for i in ${php_array[*]}; do # For all PHP versions listed in php_array:
@@ -229,3 +232,6 @@ else # If the requested PHP version is not installed; then let's show a handy me
 	printf "Sorry, but $php_version is not installed via brew. "
 	printf "Install by running: \e[1mbrew install $php_version\n"
 fi
+
+# Post Switch Hook
+[ "$(type -t _switch_php_post_tasks)" = "function" ] && _switch_php_post_tasks "${php_version}" "${verbose}" || true
