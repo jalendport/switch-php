@@ -150,7 +150,7 @@ fi
 
 # Let's check and see if Valet is installed
 [ $verbose -eq 1 ] && printf " 👀  Verifying that Valet is installed...\n" # If $verbose, then echo
-valet &>/dev/null && valet_installed=1 || valet_installed=0 # Let's store the outcome in a variable
+type -p valet &>/dev/null && valet_installed=1 || valet_installed=0 # Let's store the outcome in a variable
 
 
 # Let's check and see which PHP versions are installed
