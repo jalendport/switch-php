@@ -14,8 +14,8 @@ NC="\e[0m" # Reset everything
 
 
 # Currently available php packages
-brew_array=("5.6" "7.0" "7.1" "7.2" "7.3" "7.4")
-php_array=("php@5.6" "php@7.0" "php@7.1" "php@7.2" "php@7.3" "php@7.4")
+brew_array=("5.6" "7.0" "7.1" "7.2" "7.3" "7.4" "8.0" "8.1" "8.2")
+php_array=("php@5.6" "php@7.0" "php@7.1" "php@7.2" "php@7.3" "php@7.4" "php@8.0" "php@8.1" "php@8.2")
 
 
 # STARTS THE SPINNER
@@ -106,7 +106,7 @@ while :; do
             show_help
             exit
             ;;
-		5.6|7.0|7.1|7.2|7.3|7.4) # If a version is specified; then
+		5.6|7.0|7.1|7.2|7.3|7.4|8.0|8.1|8.2) # If a version is specified; then
 			php_version="php@$1"
 			rflag="true"  # Required!
 			;;
